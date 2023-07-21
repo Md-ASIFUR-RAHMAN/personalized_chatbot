@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cloud{% endblock %}
+
+
+{% block body %}
+<br><br>
+<center>
+   <h4>Download Your QR</h4>
+    <button class="btn gradient-bg">
+            <a href="{% static 'UPLOAD/qrimg/' %}{{UserName}}.png" download>Download</a>
+
+    </button>
+
+</center>
+<br><br>
+
+{% endblock %}

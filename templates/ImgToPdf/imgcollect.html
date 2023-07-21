@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cloud{% endblock %}
+
+
+{% block body %}
+<br><br>
+<h4 style="text-align:center">Upload Your Pictures</h4><br>
+<div style="text-align:center">
+<form method="post" action="{% url 'ImgtoPdf:imgtopdfconv' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="MultiplePicture" accept="image/*" multiple required>
+
+    <span>
+            <input class="btn gradient-bg" type="submit">
+    </span>
+</form>
+    </div>
+<br><br>
+{% endblock %}

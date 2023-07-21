@@ -1,0 +1,99 @@
+{% extends 'admin_base.html' %}
+{% load static %}
+
+{% block title %}Member List{% endblock %}
+
+
+
+
+{% block body %}
+<div class="container">
+    <div class="row" id="cancel-row">
+
+        <div class="col-xl-12 col-lg-12 col-sm-12  layout-spacing">
+            <div class="statbox widget box box-shadow">
+                <div class="widget-header">
+                    <div class="row">
+                        <div class="col-xl-12 col-md-12 col-sm-12 col-12" style=" padding-top: 25px;">
+                            <h4>All Paid Members</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget-content widget-content-area">
+                    <div class="table-responsive mb-4">
+                        <table id="default-ordering" class="table table-striped table-bordered table-hover dataTable" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>Buyer ID</th>
+                                    <th>Buyer Name</th>
+                                    <th>Card Number</th>
+                                    <th>Card Name</th>
+                                    <th>Expiry Date</th>
+                                    <th>Amount</th>
+                                    <th>Buy Date</th>
+                                    <th>Payment Status</th>
+                                    <th></th>
+<!--                                    <th>Address</th>-->
+<!--                                    <th>Executive</th>-->
+
+                                    <!--<th class="invisible"></th>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for member in members %}
+                                    <tr>
+                                        <th>{{member.buyer_id}}</th>
+<!--                                        <th>-->
+<!--                                        <img src="{% static 'UPLOAD/member/' %}{{member.Picture}}" alt="{{member.Name}}" width="70" height="70">-->
+<!--                                        </th>-->
+                                        <th>{{member.buyer_name}}</th>
+                                        <th>{{member.CardNumber}}</th>
+                                        <th>{{member.CardName}}</th>
+                                        <th>{{member.ExpiryDate}}</th>
+                                        <th>{{member.amount}}</th>
+                                        <th>{{member.buy_date}}</th>
+                                        <th>{{member.Status}}</th>
+
+                                        <th>
+                                            &nbsp;
+                                            <a href="{% url 'Admin:Edit_Member' member_id=member.id %}">
+                                               <i class="flaticon-edit-2"></i>
+                                            </a>
+
+
+                                            <a href="{% url 'Admin:Delete_Member' member_id=member.id %}" onclick="return confirm('Are you sure, You want to delete this record ?')">
+                                               <i class="flaticon-delete-2"></i>
+                                            </a>
+                                         </th>
+
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block custom_js %}
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/plugins/table/datatable/datatables.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'admin/plugins/table/datatable/custom_dt_ordering_sorting.css' %}">
+    <script src="{% static 'admin/plugins/table/datatable/datatables.js' %}"></script>
+    <script>
+        $('#default-ordering').DataTable( {
+            "language": {
+                "paginate": { "previous": "<i class='flaticon-arrow-left-1'></i>", "next": "<i class='flaticon-arrow-right'></i>" },
+                "info": "Showing page _PAGE_ of _PAGES_"
+            }, "order": [[ 3, "desc" ]],
+            drawCallback: function () { $('.dataTables_paginate > .pagination').addClass(' pagination-style-13 pagination-bordered mb-5'); }
+	    } );
+    </script>
+    <!-- END PAGE LEVEL SCRIPTS -->
+{% endblock %}

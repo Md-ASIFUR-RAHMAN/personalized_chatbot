@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cloud{% endblock %}
+
+
+{% block body %}
+
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Create Your Own Room</h1>
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .page-header -->
+
+    <div class="contact-page-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-7">
+                    <form class="contact-form" method="post" action="{% url 'roomchat:checkview' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Room Name" name="room_name" required>
+<!--                        <input type="text" placeholder="Username" name="username" required>-->
+                        <input style="width: 100%;
+                                        padding: 12px 24px;
+                                        margin-bottom: 18px;
+                                        border: 1px solid #e0e0e0;
+                                        font-size: 14px;
+                                        line-height: 1;"
+                               type="password" placeholder="Password" name="passw" required>
+<!--                        <textarea rows="15" cols="6" placeholder="Messages"></textarea>-->
+                        <span>
+                            <input class="btn gradient-bg" type="submit" value="Open Room">
+                        </span>
+                    </form><!-- .contact-form -->
+
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div>
+
+  {% endblock %}

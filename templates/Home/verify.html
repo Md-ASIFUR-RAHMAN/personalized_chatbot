@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cloud{% endblock %}
+
+
+{% block body %}
+
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Enter your OTP</h1>
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .page-header -->
+
+    <div class="contact-page-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <form class="contact-form"  method="post" action="{% url 'Home:verify' action_id=user.ID  %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="text" name="verify" placeholder="Enter OTP" required>
+                        <h4><i>{{msg}}</i></h4>
+                        <span>
+                            <input class="btn gradient-bg" type="submit" value="Verify">
+                        </span>
+                    </form><!-- .contact-form -->
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div>
+
+  {% endblock %}
+
+

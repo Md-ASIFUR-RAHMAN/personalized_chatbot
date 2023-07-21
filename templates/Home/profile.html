@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cloud{% endblock %}
+
+
+{% block body %}
+
+    <div class="featured-cause">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <div class="cause-wrap d-flex flex-wrap justify-content-between">
+                        <figure class="m-0">
+                            <img style="border-radius: 50%; height:200px; width:250px;" src="{% static 'UPLOAD/NewUser/' %}{{user.ID}}/{{user.pro_pic}}" alt="{{user.Name}}"><br><br>
+                        </figure>
+
+                        <div class="cause-content-wrap">
+                            <header class="entry-header d-flex flex-wrap align-items-center">
+                                <h3 class="entry-title w-100 m-0">{{user.Name}}</h3>
+
+                                <div class="cats-links">
+                                    {{user.Email}}
+                                </div><!-- .cats-links -->
+                            </header><!-- .entry-header -->
+
+
+
+                            <div class="entry-footer mt-5">
+                                <a href="{% url 'Home:Profile_Pic_Edit' action_id=user.ID %}" class="btn gradient-bg mr-2">Change</a>
+                            </div><!-- .entry-footer -->
+                        </div><!-- .cause-content-wrap -->
+
+                        <div class="fund-raised w-100">
+                            <div class="featured-fund-raised-bar barfiller">
+                                <div class="tipWrap">
+                                    <span class="tip"></span>
+                                </div><!-- .tipWrap -->
+
+                                <span class="fill" data-percentage="100"></span>
+                            </div><!-- .fund-raised-bar -->
+                        </div><!-- .fund-raised -->
+                    </div><!-- .cause-wrap -->
+                </div><!-- .col -->
+
+
+                <div class="col-12 col-lg-6" style="bottom: 45px">
+<!--                    <div class="cause-wrap d-flex flex-wrap justify-content-between">-->
+<!--                        <div class="cause-content-wrap">-->
+                    <form class="contact-form" method="post" action="{% url 'Home:Registration' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <h6><label>Name : </label></h6>
+                        <input type="text" name="name" value="{{user.Name}}" readonly >
+                        <h6><label>Phone : </label></h6>
+                        <input type="text"  name="phone" value="{{user.Phone}}" readonly >
+                        <h6><label>Email : </label></h6>
+                        <input type="email"  name="email" value="{{user.Email}}" readonly >
+                        <h6><label>Gender : </label></h6>
+                        <input type="text"  name="gender" value="{{user.Gender}}" readonly >
+                        <h6><label>Company Type : </label></h6>
+                        <input type="text"  name="gender" value="{{user.type}}" readonly >
+                        <h6><label>Password: </label></h6>
+                        <input style="width: 100%;
+                                        padding: 12px 24px;
+                                        margin-bottom: 18px;
+                                        border: 1px solid #e0e0e0;
+                                        font-size: 14px;
+                                        line-height: 1;"
+                               type="password" name="passw" value="**********************" readonly>
+<!--                        <textarea rows="15" cols="6" placeholder="Messages"></textarea>-->
+                        <span>
+                                <a href="{% url 'Home:Profile_Info_Edit' action_id=user.ID %}" class="btn gradient-bg mr-2">Update</a>
+                        </span>
+                    </form><!-- .contact-form -->
+
+                </div><!-- .col -->
+
+<!--                </div>-->
+<!--                </div>-->
+
+
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .featured-cause -->
+
+
+  {% endblock %}

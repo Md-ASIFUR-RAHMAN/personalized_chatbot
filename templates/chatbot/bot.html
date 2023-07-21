@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cloud{% endblock %}
+
+
+{% block body %}
+
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1></h1>
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .page-header -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="donation-form-wrap">
+                    <h2>Hi {{name.Name}}!</h2>
+
+                    <h4 class="mt-5">Create Your Own Chatbot</h4>
+                    <h4 class="w-100 mt-5 mb-3">Give Information</h4>
+
+
+                    <form class="donation-form" action="{% url 'chatbot:faq' %}" method="post">
+
+                        {% csrf_token %}
+
+
+                        <div id ="form-fields"  class="billing-information  d-flex flex-wrap justify-content-between align-items-center">
+
+                            <div class="form-field" >
+
+                            </div>
+
+<!--                            <input type="text" placeholder="Question 1" name="qs1">-->
+<!--                            <input type="text" placeholder="Answer 1" name="ans1">-->
+
+<!--                            <input type="text" placeholder="Question 2" name="qs2">-->
+<!--                            <input type="text" placeholder="Answer 2" name="ans2">-->
+
+<!--                            <input type="text" placeholder="Question 3" name="qs3">-->
+<!--                            <input type="text" placeholder="Answer 3" name="ans3">-->
+
+<!--                            <input type="text" placeholder="Question 4" name="qs4">-->
+<!--                            <input type="text" placeholder="Answer 4" name="ans4">-->
+
+<!--                            <input type="text" placeholder="Question 5" name="qs5">-->
+<!--                            <input type="text" placeholder="Answer 5" name="ans5">-->
+                        </div>
+<!--                        <button id ="add-field" class="btn gradient-bg mt-5">Add More</button>-->
+                        <input class="btn gradient-bg mt-5" type="submit" value="Get Bot">
+                    </form>
+                    <button id ="add-field" class="btn gradient-bg mt-5">Add More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            var formFieldsContainer = $('#form-fields');
+            var addFieldButton = $('#add-field');
+
+            $(addFieldButton).click(function() {
+                var fieldHTML = '<div class="form-field">' +
+                                    '<input type="text" placeholder = "Question' +($('.form-field').length + 1) + '"  name="qs' + ($('.form-field').length + 1) + '">' + " "+
+                                    '<input type="text" placeholder = "Answer' +($('.form-field').length + 1) + '"  name="ans' + ($('.form-field').length + 1) + '">'+
+                                '</div>';
+
+                $(formFieldsContainer).append(fieldHTML);
+            });
+        });
+    </script>
+
+{% endblock %}

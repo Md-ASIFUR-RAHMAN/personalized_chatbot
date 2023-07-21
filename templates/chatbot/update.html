@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cloud{% endblock %}
+
+
+{% block body %}
+
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1></h1>
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .page-header -->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="donation-form-wrap">
+                    <h2>Hi {{name}}!</h2>
+
+                    <h4 class="mt-5">Create Your Own Chatbot</h4>
+
+                    <form class="donation-form" action="{% url 'chatbot:update' pk=user_api %}" method="post">
+
+                        {% csrf_token %}
+
+
+                        <div id = "form-fields" class="billing-information  d-flex flex-wrap justify-content-between align-items-center">
+                            <h4 class="w-100 mt-5 mb-3">Give Information</h4>
+
+
+                            <div class = "form-field">
+
+                                {% for i in user %}
+
+                            <input type="text" value="{{i.0}}" name="qs{{i}}" >
+                            <input type="text" value="{{i.1}}" name="ans{{i}}" >
+
+                            {% endfor %}
+
+                            </div>
+
+<!--                            <input type="text" value="{{user.qs2}}" name="qs2">-->
+<!--                            <input type="text" value="{{user.ans2}}" name="ans2">-->
+
+<!--                            <input type="text" value="{{user.qs3}}" name="qs3">-->
+<!--                            <input type="text" value="{{user.ans3}}" name="ans3">-->
+
+<!--                            <input type="text" value="{{user.qs4}}" name="qs4">-->
+<!--                            <input type="text" value="{{user.ans4}}" name="ans4">-->
+
+<!--                            <input type="text" value="{{user.qs5}}" name="qs5">-->
+<!--                            <input type="text" value="{{user.ans5}}" name="ans5">-->
+                        </div>
+                        <span>
+                            <input class="btn gradient-bg mt-5" type="submit" value="Update Bot">
+                            <a href="{% url 'chatbot:delete' pk=user_api %}" class="btn gradient-bg mt-5">Delete bot</a>
+                        </span>
+                    </form>
+                    <button id ="add-field" class="btn gradient-bg mt-5">Add More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+        $(document).ready(function() {
+            var formFieldsContainer = $('#form-fields');
+            var addFieldButton = $('#add-field');
+
+            $(addFieldButton).click(function() {
+                var fieldHTML = '<div class="form-field">' +
+                                    '<input type="text" placeholder = "Question' +($('.form-field').length + 1) + '"  name="qs' + ($('.form-field').length + 1) + '">' + " "+
+                                    '<input type="text" placeholder = "Answer' +($('.form-field').length + 1) + '"  name="ans' + ($('.form-field').length + 1) + '">'+
+                                '</div>';
+
+                $(formFieldsContainer).append(fieldHTML);
+            });
+        });
+    </script>
+
+{% endblock %}

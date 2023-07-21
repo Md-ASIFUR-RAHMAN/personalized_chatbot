@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cloud{% endblock %}
+
+
+{% block body %}
+<br><br>
+<div style="text-align:center">
+<h4 style="color : purple; padding : 10px;"><img src="{% static 'images/point.png' %}">This is your API :  aimaker/api/ChatAPI/{{code}} </h4>
+<br><br>
+<h6><i style="color : purple; padding : 10px;">You can check or test your bot here :</i> </h6>
+<a style="color : purple; padding : 10px;" href="{% url 'chatbot:chat' action_id=code %}"><img src="{% static 'images/point.png' %}">Click Here</a>
+</div>
+<br><br>
+{% endblock %}

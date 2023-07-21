@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cloud{% endblock %}
+
+
+{% block body %}
+<br><br>
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Create Your Own QR</h1>
+                </div><!-- .col -->
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div><!-- .page-header -->
+
+    <div class="contact-page-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+                    <form class="contact-form" method="post" action="{% url 'GenQR:Generate_QR' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <textarea rows="8" type="text" placeholder="Type Here" name="value">
+
+                        </textarea>
+                        <span>
+                            <input class="btn gradient-bg" type="submit" value="Create QR">
+                        </span>
+                    </form><!-- .contact-form -->
+                </div><!-- .col -->
+                <div class="col-14 col-lg-6">
+                    <h6>Example of creating QR code</h6>
+                    <img src="{% static 'images/alex.png' %}" height="400px" width="500px">
+                </div>
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </div>
+
+  {% endblock %}

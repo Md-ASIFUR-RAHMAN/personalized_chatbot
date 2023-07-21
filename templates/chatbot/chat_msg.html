@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cloud{% endblock %}
+
+
+{% block body %}
+
+
+<head>
+
+    <style>
+
+.containerr {
+  border: 2px solid #dedede;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 100px;
+  width : 1000px;
+}
+
+.containerr_you {
+  border: 2px solid #dedede;
+  background-color: white;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 100px;
+  width : 1000px;
+  height : 70px;
+}
+
+.darker {
+  border-color: #ccc;
+  background-color: orange;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 100px;
+  width : 1000px;
+}
+
+.containerr::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.containerr img {
+  float: left;
+  max-width: 60px;
+  width: 100%;
+  margin-right: 20px;
+  border-radius: 50%;
+}
+
+.containerr img.right {
+  float: right;
+  margin-left: 20px;
+  margin-right:0;
+}
+
+.time-right {
+  float: right;
+  color: #3C0C0C;
+}
+
+.time-left {
+  float: left;
+  color: #3C0C0C;
+}
+</style>
+</head>
+
+<br><br>
+
+<h4 style="text-align:center">Chat Messages V1.0.0</h4>
+
+<div class="containerr_you">
+  <h6>{{msg1}}</h6>
+            <span class="time-left">You</span>
+
+</div>
+
+<div class="containerr darker">
+  <h6 class="time-right">{{msg}}</h6><br>
+    <span class="time-right">From Bot </span>
+
+</div>
+
+<div class="containerr">
+<form class="contact-form" method="post" >
+    {% csrf_token %}
+
+        <input type="text" name="msg">
+
+    <span>
+    <input class="btn gradient-bg"  type="submit" value="Send">
+        </span>
+
+</form>
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}
