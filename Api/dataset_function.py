@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics.pairwise import cosine_similarity
+import re
 
 
 # Chatbot function
@@ -81,15 +82,12 @@ def chatbot(value,given_msg):
     web_dev_vectorizer = TfidfVectorizer()
     web_dev_question_vectors = web_dev_vectorizer.fit_transform(web_dev_df['Question'].values.astype('U'))
 
+    ignore_words = ["what", "how", "where", "is", "are", "why", "when"]
 
-
-
-
-
-
-
-
-
+    # Remove ignore words from the input question
+    question_words = re.findall(r'\b\w+\b', given_msg.lower())
+    filtered_question = " ".join([word for word in question_words if word not in ignore_words])
+    given_msg = filtered_question
 
 
     if topic.lower() == 'bakery' or topic.lower() == 'pastry' or topic.lower() == 'bakery and pastry':
@@ -167,7 +165,7 @@ def chatbot(value,given_msg):
         else:
             msg = "Pardon me. Please ask me with a meaningful keyword or sentence"
 
-    elif topic.lower() == 'realstate' or topic.lower() == 'real-state':
+    elif topic.lower() == 'realstate' or topic.lower() == 'real-state' or topic.lower() == 'real state':
         question = given_msg
         question_vector = realstate_vectorizer.transform([question])
         similarity_scores = cosine_similarity(question_vector, realstate_question_vectors)[0]

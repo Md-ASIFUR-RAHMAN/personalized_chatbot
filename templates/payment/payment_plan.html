@@ -1,10 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cloud{% endblock %}
+
+
+{% block body %}
+  <style>
+
+.container_pay {
+  display: flex;
+  justify-content: space-around;
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 30%;
+}
+
+h2 {
+  color: Black;
+}
+
+p {
+  color: #444;
+}
+
+.button_pay {
+  background-color: orange;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+  </style>
+
+  <div class="container_pay">
+    <form method="post" action="{% url 'payment:getapi_trial' %}" enctype="multipart/form-data" class="card">
+      {% csrf_token %}
+    <div>
+      <h2>Basic</h2>
+      <p>15 Days Trial</p>
+      <button class="button_pay">Try it!</button>
+    </div>
+    </form>
+
+    <form method="post" enctype="multipart/form-data" class="card">
+      {% csrf_token %}
+    <div>
+      <h2>Advance</h2>
+      <p>1800 BDT/ Four Month</p>
+      <button type="submit" class="button_pay"><a href="{% url 'payment:getapi_advance' %}">Let's Go</a></button>
+    </div>
+    </form>
+
+    <form method="post" action="{% url 'payment:getapi_pro' %}" enctype="multipart/form-data" class="card">
+      {% csrf_token %}
+    <div>
+      <h2>Pro</h2>
+      <p>5000 BDT/Year</p>
+      <button class="button_pay">Let's Go</button>
+    </div>
+  </div>
+
+{% endblock %}

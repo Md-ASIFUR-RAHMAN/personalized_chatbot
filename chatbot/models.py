@@ -30,3 +30,7 @@ class ChatFaq(models.Model):
     Answer = models.CharField(blank=True, max_length=1000, null=True)
     Dictionary = models.CharField(blank=True, max_length=1000, null=True)
 
+class Trial(models.Model):
+    Idd = models.CharField(blank=True, max_length=500, null=True,unique=True)
+    Status = models.CharField(blank=True, max_length=1000, null=True)
+    datee = models.DateField()
