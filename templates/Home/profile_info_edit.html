@@ -5,6 +5,11 @@
 
 
 {% block body %}
+    <style>
+   input {
+  border-radius: 25px;
+}
+    </style>
 
     <div class="featured-cause">
         <div class="container">
@@ -53,7 +58,31 @@
                         <input type="text"  name="phone" value="{{user.Phone}}" >
                         <input type="email"  name="email" value="{{user.Email}}" >
                         <input type="text"  name="gender" value="{{user.Gender}}" >
-                        <input type="text"  name="type" value="{{user.type}}" >
+<!--                        <input type="text"  name="type" value="{{user.type}}" >-->
+
+                                                <h6 style="color:black;">Company Type :</h6>
+                        <select style="width: 100%;
+                                        padding: 12px 24px;
+                                        margin-bottom: 18px;
+                                        border: 1px solid #e0e0e0;
+                                        font-size: 14px;
+                                        line-height: 1;"
+                                name="type" id="cars">
+                          <option value="Bakery">Bakery and Pastry</option>
+                          <option value="Real State">Real State</option>
+                          <option value="pet">Pet</option>
+                          <option value="Restaurant">Restaurant</option>
+                            <option value="Wedding Planner">Wedding Planner</option>
+                            <option value="Ecommerce">Ecommerce</option>
+                          <option value="Fitness">Fitness Studio</option>
+                          <option value="Home Cleaning">Home Cleaning</option>
+                          <option value="Software">Software Company</option>
+                            <option value="Tutor Service">Tutor Service</option>
+                            <option value="web">Web Development</option>
+                            <option value="Language School">Language School</option>
+
+
+                        </select>
                         <input style="width: 100%;
                                         padding: 12px 24px;
                                         margin-bottom: 18px;

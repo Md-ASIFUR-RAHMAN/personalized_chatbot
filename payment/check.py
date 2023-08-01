@@ -7,7 +7,7 @@ def gateway(username,user_email):
 
     mypayment = SSLCSession(sslc_is_sandbox=True, sslc_store_id='ayons64be25828679a', sslc_store_pass='ayons64be25828679a@ssl')
 
-    mypayment.set_urls(success_url='aimaker.com/success', fail_url='aimaker.com/failed', cancel_url='aimaker.com/cancel', ipn_url='aimaker.com/payment_notification')
+    mypayment.set_urls(success_url='http://127.0.0.1:8000/getpayment/success', fail_url='http://127.0.0.1:8000/getpayment/fail', cancel_url='http://127.0.0.1:8000/getpayment/fail', ipn_url='aimaker.com/payment_notification')
 
     mypayment.set_product_integration(total_amount=Decimal(1800.0), currency='BDT', product_category='chatbot', product_name='demo-product', num_of_item=1, shipping_method='NO', product_profile='None')
 

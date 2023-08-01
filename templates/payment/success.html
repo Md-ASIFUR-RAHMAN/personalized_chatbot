@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cloud{% endblock %}
+
+
+{% block body %}
+  <style>
+
+.container_pay {
+  display: flex;
+  justify-content: space-around;
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 30%;
+}
+
+h2 {
+  color: Black;
+}
+
+p {
+  color: #444;
+}
+
+.button_pay {
+  background-color: orange;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+  </style>
+
+<div style="text-align:center">
+  <div class="container_pay">
+    <h4>{{message}}</h4>
+  </div>
+<a style="color : purple; padding : 10px; font-size:20px;" href="{% url 'payment:get_Api' %}"><img src="{% static 'images/point.png' %}">Get Api</a>
+  <br><br>
+</div>
+
+{% endblock %}

@@ -25,6 +25,11 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
+    <style>
+   input {
+  border-radius: 25px;
+}
+    </style>
 </head>
 <body>
 
@@ -63,7 +68,6 @@
                                 <li class="current-menu-item"><a href="/Dashboard">Home</a></li>
                                 <li><a href="{% url 'Home:About' %}">About us</a></li>
                                 <li><a href="{% url 'Home:Services' %}">Services</a></li>
-                                <li><a href="{% url 'Home:Profile' %}">Profile</a></li>
                                 <li><a href="{% url 'Home:Registration' %}">Register</a></li>
 
                             </ul>
@@ -81,22 +85,24 @@
         </div><!-- .nav-bar -->
     </header><!-- .site-header -->
 
-    <div class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1>Log In</h1>
-                </div><!-- .col -->
-            </div><!-- .row -->
-        </div><!-- .container -->
-    </div><!-- .page-header -->
+<!--    <div class="page-header">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-12">-->
+<!--                    <h1>Log In</h1>-->
+<!--                </div>&lt;!&ndash; .col &ndash;&gt;-->
+<!--            </div>&lt;!&ndash; .row &ndash;&gt;-->
+<!--        </div>&lt;!&ndash; .container &ndash;&gt;-->
+<!--    </div>&lt;!&ndash; .page-header &ndash;&gt;-->
 
+    <div>
     <div class="contact-page-wrap">
         <div class="container">
             <div class="row">
-                <div class="col-12 col-lg-7">
-                    <form class="contact-form" method="post" action="{% url 'Home:Login' %}" enctype="multipart/form-data">
+                <div class="col-12 col-lg-6">
+                    <form class="contact-form" method="post" action="{% url 'Home:Login' %}" enctype="multipart/form-data" style="background-image: url('static/images/myback.jpg');">
                         {% csrf_token %}
+                        <h2 style="text-align:center; color:white">Login</h2>
                         <input type="email" placeholder="email" name="email" required>
                         <input style="width: 100%;
                                         padding: 12px 24px;
@@ -106,14 +112,14 @@
                                         line-height: 1;"
                                type="password" placeholder="Password" name="passw" required>
 <!--                        <textarea rows="15" cols="6" placeholder="Messages"></textarea>-->
-                        <h6>{{msg}}</h6>
+                        <h6 style="text-align:center; color:white">{{msg}}</h6>
                         <span>
                             <input class="btn gradient-bg" type="submit" value="Login">
                         </span>
                     </form><!-- .contact-form -->
                     <br>
-                    <h6>Don't have account ? Create an account now </h6> <a style="color:orange;" href="{% url 'Home:Registration' %}"><b>Registration</b></a>
-                    <h6>Forgot Password?</h6> <a style="color:orange;" href="{% url 'Home:send_simple_message' %}"><b>Recover</b></a>
+                    <h6>Don't have account ? Create an account now </h6> <a style="color:orange; text-decoration:none;" href="{% url 'Home:Registration' %}"><b>Registration</b></a>
+                    <h6>Forgot Password?</h6> <a style="color:orange; text-decoration:none;" href="{% url 'Home:send_simple_message' %}"><b>Recover</b></a>
 
                 </div><!-- .col -->
             </div><!-- .row -->
@@ -205,7 +211,7 @@
                 <div class="row">
                     <div class="col-12">
                         <p class="m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Ayonssolution Limited <i class="fa fa-heart-o" aria-hidden="true"></i>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                     </div><!-- .col-12 -->
                 </div><!-- .row -->

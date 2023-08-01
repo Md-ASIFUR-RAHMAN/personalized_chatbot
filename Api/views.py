@@ -29,7 +29,7 @@ def basic(pk):
         new = new_date - user.datee
         print(new.days)
 
-        if new.days > 0:
+        if new.days > 3:
             print(new.days)
 
             user.Status = 'over'
@@ -58,7 +58,7 @@ def advance(pk):
         new = new_date - user.buy_date
         print(new.days)
 
-        if new.days > 0:
+        if new.days > 3:
             print(new.days)
 
             user.Status = 'over'

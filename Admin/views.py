@@ -6,6 +6,8 @@ from django.views.decorators.csrf import csrf_protect
 from chatbot.models import ChatFaq
 from Home.models import *
 from payment.models import *
+from chatbot.models import *
+
 import hashlib
 import hashlib
 
@@ -36,7 +38,8 @@ def Dashboard(request):
         'admin_name': admin_name,
         'all_user_count': Registration.objects.count(),
         'total_chatbot_user': ChatFaq.objects.count(),
-        'paid_user': payment_info.objects.filter(Status='ok').count()
+        'paid_user': payment_info.objects.filter(Status='ok').count(),
+        'trial_user': Trial.objects.filter(Status='on').count()
     }
     return render(request, 'admin/dashboard.html', context)
 

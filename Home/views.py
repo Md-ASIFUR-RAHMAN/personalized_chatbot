@@ -83,7 +83,7 @@ def send_simple_message(request):
 
             # Define email sender and receiver
             email_sender = 'ayonssolution@gmail.com'
-            email_password = 'pvozfanvsnqwwrgz'
+            email_password = 'sexbmaxiqtzhyylp'
             email_receiver = data['email']
 
             # Set the subject and body of the email

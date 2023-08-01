@@ -1,6 +1,8 @@
 import datetime
 
-from django.shortcuts import render,HttpResponseRedirect
+from django.shortcuts import render,HttpResponseRedirect,redirect
+from django.views.decorators.csrf import csrf_exempt
+
 from .models import *
 from Home.views import encode, decode
 # Create your views here.
@@ -12,6 +14,9 @@ from .check import gateway
 # def success(request):
 
 def getapi_withpay(request):
+
+    if 'VisitorStatus' not in request.session or request.session['VisitorStatus'] != "user":
+        return redirect('Home:Login')
 
     try :
         user = payment_info.objects.get(buyer_id=request.session['UserID'])
@@ -53,6 +58,10 @@ def getapi_withpay(request):
                 return render(request, 'payment/get_bill_info.html',context)
 
 def getapi_trial(request):
+
+    if 'VisitorStatus' not in request.session or request.session['VisitorStatus'] != "user":
+        return redirect('Home:Login')
+
     if request.method == 'POST':
 
         try:
@@ -71,6 +80,9 @@ def getapi_trial(request):
 
 
 def getapi_advance(request):
+
+    if 'VisitorStatus' not in request.session or request.session['VisitorStatus'] != "user":
+        return redirect('Home:Login')
 
     try :
         user = payment_info.objects.get(buyer_id=request.session['UserID'])
@@ -168,11 +180,19 @@ def getapi_pro(request):
 
 def ssl(request):
 
-    val = gateway('abc','abc@gmail.com')
+    if 'VisitorStatus' not in request.session or request.session['VisitorStatus'] != "user":
+        return redirect('Home:Login')
+
+    val = gateway('Ayonsolution','Ayonsolution@gmail.com')
+    print(val['sessionkey'])
+
     return HttpResponseRedirect(val['GatewayPageURL'])
 
 
 def paymentt(request):
+
+    if 'VisitorStatus' not in request.session or request.session['VisitorStatus'] != "user":
+        return redirect('Home:Login')
 
     try:
         idd = request.session['UserID']
@@ -189,5 +209,25 @@ def paymentt(request):
         return render(request, 'payment/payment_plan.html')
 
 
+@csrf_exempt
+def success(request):
 
+    context = {
+        'message': 'Payment Successful'
+    }
+    return render(request, 'payment/success.html', context)
 
+def get_Api(request):
+    if 'VisitorStatus' not in request.session or request.session['VisitorStatus'] != "user":
+        return redirect('Home:Login')
+
+    code = encode(request.session['UserID'])
+    context = {
+        'code': code
+    }
+    return render(request, 'chatbot/code_api.html', context)
+
+@csrf_exempt
+def fail(request):
+
+    return redirect('payment:paymentt')

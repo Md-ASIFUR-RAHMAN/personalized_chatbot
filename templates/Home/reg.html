@@ -25,6 +25,16 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
+
+    <style>
+   input {
+  border-radius: 25px;
+}
+
+   select {
+  border-radius: 25px;
+}
+    </style>
 </head>
 <body>
     <header class="site-header">
@@ -62,7 +72,6 @@
                                 <li class="current-menu-item"><a href="/Dashboard">Home</a></li>
                                 <li><a href="{% url 'Home:About' %}">About us</a></li>
                                 <li><a href="{% url 'Home:Services' %}">Services</a></li>
-                                <li><a href="{% url 'Home:Profile' %}">Profile</a></li>
                                 <li><a href="{% url 'Home:Login' %}">Login</a></li>
 
                             </ul>
@@ -80,27 +89,28 @@
         </div><!-- .nav-bar -->
     </header><!-- .site-header -->
 
-    <div class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <h1>Registration</h1>
-                </div><!-- .col -->
-            </div><!-- .row -->
-        </div><!-- .container -->
-    </div><!-- .page-header -->
+<!--    <div class="page-header">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-12">-->
+<!--                    <h1>Registration</h1>-->
+<!--                </div>&lt;!&ndash; .col &ndash;&gt;-->
+<!--            </div>&lt;!&ndash; .row &ndash;&gt;-->
+<!--        </div>&lt;!&ndash; .container &ndash;&gt;-->
+<!--    </div>&lt;!&ndash; .page-header &ndash;&gt;-->
 
     <div class="contact-page-wrap">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-lg-7">
-                    <form class="contact-form" method="post" action="{% url 'Home:Registration' %}" enctype="multipart/form-data">
+                    <form class="contact-form" method="post" action="{% url 'Home:Registration' %}" enctype="multipart/form-data" style="background-image: url('static/images/myback.jpg');">
                         {% csrf_token %}
+                        <h2 style="text-align:center; color:white">Registration</h2>
                         <input type="text" placeholder="Name" name="name" required>
                         <input type="text" placeholder="Phone" name="phone" required>
-                        <h6>{{msg2}}</h6>
+                        <h6 style="text-align:center; color:white">{{msg2}}</h6>
                         <input type="email" placeholder="Email" name="email" required>
-                        <h6>{{msg1}}</h6>
+                        <h6 style="text-align:center; color:white">{{msg1}}</h6>
                         <input type="text" placeholder="Gender" name="gender" required>
                         <input style="width: 100%;
                                         padding: 12px 24px;
@@ -116,12 +126,36 @@
                                         font-size: 14px;
                                         line-height: 1;"
                                type="password" placeholder="Re-Type Password" name="repassw" required>
-                        <h6>{{msg3}}</h6>
-                        <input type="text" placeholder="Type your chatbot type" name="typee" required>
+                        <h6 style="text-align:center; color:white">{{msg3}}</h6>
+
+                        <h6 style="color:white;">Company Type :</h6>
+                        <select style="width: 100%;
+                                        padding: 12px 24px;
+                                        margin-bottom: 18px;
+                                        border: 1px solid #e0e0e0;
+                                        font-size: 14px;
+                                        line-height: 1;"
+                                name="typee" id="cars">
+                          <option value="Bakery">Bakery and Pastry</option>
+                          <option value="Real State">Real State</option>
+                          <option value="pet">Pet</option>
+                          <option value="Restaurant">Restaurant</option>
+                            <option value="Wedding Planner">Wedding Planner</option>
+                            <option value="Ecommerce">Ecommerce</option>
+                          <option value="Fitness">Fitness Studio</option>
+                          <option value="Home Cleaning">Home Cleaning</option>
+                          <option value="Software">Software Company</option>
+                            <option value="Tutor Service">Tutor Service</option>
+                            <option value="web">Web Development</option>
+                            <option value="Language School">Language School</option>
+
+
+                        </select>
+<!--                        <input type="text" placeholder="Type your chatbot type" name="typee" required>-->
 
                         <label>Profile Picture</label>
                         <br>
-                        <input type="file" name="picture">
+                        <input style="color:white;" type="file" name="picture">
 <!--                        <textarea rows="15" cols="6" placeholder="Messages"></textarea>-->
                         <span>
                             <input class="btn gradient-bg" type="submit" value="Submit">
@@ -129,7 +163,7 @@
                     </form><!-- .contact-form -->
 
                     <br>
-                    <h6>Already have an account ? </h6> <a style="color:orange;" href="{% url 'Home:Login' %}"><b>Login</b></a>
+                    <h6>Already have an account ? </h6> <a style="color:orange; text-decoration:none;" href="{% url 'Home:Login' %}"><b>Login</b></a>
 
                 </div><!-- .col -->
             </div><!-- .row -->
@@ -221,7 +255,7 @@
                 <div class="row">
                     <div class="col-12">
                         <p class="m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Ayonssolution Limited <i class="fa fa-heart-o" aria-hidden="true"></i>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                     </div><!-- .col-12 -->
                 </div><!-- .row -->

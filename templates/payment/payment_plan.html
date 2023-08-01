@@ -47,7 +47,7 @@ p {
     <form method="post" action="{% url 'payment:getapi_trial' %}" enctype="multipart/form-data" class="card">
       {% csrf_token %}
     <div>
-      <h2>Basic</h2>
+      <h3>Basic</h3>
       <p>15 Days Trial</p>
       <button class="button_pay">Try it!</button>
     </div>
@@ -56,19 +56,20 @@ p {
     <form method="post" enctype="multipart/form-data" class="card">
       {% csrf_token %}
     <div>
-      <h2>Advance</h2>
+      <h3>Advance</h3>
       <p>1800 BDT/ Four Month</p>
-      <button type="submit" class="button_pay"><a href="{% url 'payment:getapi_advance' %}">Let's Go</a></button>
+      <button  type="submit" class="button_pay"><a style="text-decoration:none; color:white;" href="{% url 'payment:getapi_advance' %}">Let's Go</a></button>
     </div>
     </form>
 
-    <form method="post" action="{% url 'payment:getapi_pro' %}" enctype="multipart/form-data" class="card">
-      {% csrf_token %}
-    <div>
-      <h2>Pro</h2>
-      <p>5000 BDT/Year</p>
-      <button class="button_pay">Let's Go</button>
-    </div>
+<!--    <form method="post" action="{% url 'payment:getapi_pro' %}" enctype="multipart/form-data" class="card">-->
+<!--      {% csrf_token %}-->
+<!--    <div>-->
+<!--      <h2>Pro</h2>-->
+<!--      <p>5000 BDT/Year</p>-->
+<!--      <button class="button_pay">Let's Go</button>-->
+<!--    </div>-->
+<!--    </form>-->
   </div>
 
 {% endblock %}

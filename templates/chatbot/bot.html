@@ -23,8 +23,9 @@
                     <h2>Hi {{name.Name}}!</h2>
 
                     <h4 class="mt-5">Create Your Own Chatbot</h4>
+                    <br>
+                    <h5><i style="color:blue">Note: </i> This Chatbot will create based on your "Company Type". You can change your "Company Type" from your <a style="text-decoration: none; color:blue;" href="{% url 'Home:Profile' %}">Profile</a> </h5>
                     <h4 class="w-100 mt-5 mb-3">Give Information</h4>
-
 
                     <form class="donation-form" action="{% url 'chatbot:faq' %}" method="post">
 
